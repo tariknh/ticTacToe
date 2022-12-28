@@ -1,0 +1,71 @@
+@font-face {
+    font-family: arcade;
+    src: url(https://www.dafont.com/arcade-ya.font);
+  }
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica;
+    text-align: center;
+}
+div{
+    border: 5px solid black;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    place-content: center;
+}
+section{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 70vh;
+    width: 70vh;
+    padding: 3em;
+    place-content: center;
+    margin: 0 auto;
+    grid-gap: 1rem;
+}
+span{
+    font-size: 4rem;
+}
+h1{
+    margin-bottom: 1em;
+}
+.idle{
+    margin: 0 auto;
+    padding: 1em;
+    width: 12rem;
+    height: 2rem;
+    text-align: center;
+    display: grid;
+    place-content: center;
+    place-items: center;
+    font-family: Helvetica;
+    font-weight: 600;
+    font-size: 1.5rem;
+    background-color: white;
+    border-radius: 10px;
+    border: 3px solid black;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.active{
+    margin: 0 auto;
+    padding: 1em;
+    width: 12rem;
+    height: 2rem;
+    text-align: center;
+    display: grid;
+    place-content: center;
+    place-items: center;
+    font-family: Helvetica;
+    font-weight: 600;
+    font-size: 1.5rem;
+    background-color: rgba(202, 92, 221, 1);
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 3px solid white;
+    transition: 0.3s;
+}
