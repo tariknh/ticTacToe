@@ -11,9 +11,10 @@ function clearBoard() {
   });
 }
 let xTurn = false;
-let displayWin = document.querySelector("body > section:nth-child(4) > h2");
+const displayWin = document.querySelector('body > section:nth-child(4) > h2');
 let board = ['', '', '', '', '', '', '', '', ''];
 function checkWin() {
+  const checkDraw = board.reduce((first, second) => first + second)
   const firstRow = board[0] + board[1] + board[2];
   const secondRow = board[3] + board[4] + board[5];
   const thirdRow = board[6] + board[7] + board[8];
@@ -32,7 +33,7 @@ function checkWin() {
     || rightCross === 'XXX'
     || leftCross === 'XXX'
   ) {
-    displayWin.innerHTML = "X Is The Winner!"
+    displayWin.innerHTML = 'X Is The Winner!';
     clearBoard();
   } else if (
     firstRow === 'OOO'
@@ -44,7 +45,12 @@ function checkWin() {
     || rightCross === 'OOO'
     || leftCross === 'OOO'
   ) {
-    displayWin.innerHTML = "O Is The Winner!"
+    displayWin.innerHTML = 'O Is The Winner!';
+    clearBoard();
+  } else if (
+    checkDraw.length === 9
+  ) {
+    displayWin.innerHTML = 'DRAW!';
     clearBoard();
   }
 }
@@ -52,9 +58,9 @@ function checkWin() {
 (function displayBoard() {
   const playerOne = new Player('john', 'X');
   const playerTwo = new Player('chris', 'O');
-  let turnCount = 0;
+  const turnCount = 0;
   let boxID = 0;
-  const webBoard = document.querySelector("body > section.sectionGrid");
+  const webBoard = document.querySelector('body > section.sectionGrid');
   board.forEach((tile) => {
     const createTile = document.createElement('div');
     createTile.setAttribute('id', boxID);
