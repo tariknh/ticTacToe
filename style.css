@@ -1,21 +1,34 @@
 @font-face {
     font-family: arcade;
     src: url(https://www.dafont.com/arcade-ya.font);
+    color: white;
+  }
+  @keyframes bg-anim {
+    0%{background-position: left;}
+    100%{background-position: right;}
   }
 *{
     margin: 0;
     padding: 0;
     font-family: Helvetica;
     text-align: center;
+    box-sizing: border-box;
+}
+body{
+    background-image: url(space.jpg);
+    background-size: contain;
+    background-size: 150%;
+    animation: bg-anim 400s infinite alternate;
 }
 div{
-    border: 5px solid black;
+    border: 5px solid white;
     border-radius: 10px;
     display: grid;
     place-items: center;
     place-content: center;
+    cursor: pointer;
 }
-section{
+.sectionGrid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -30,7 +43,13 @@ span{
     font-size: 4rem;
 }
 h1{
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    color: white;
+    font-size: 3rem;
+}
+span{
+    color: white;
 }
 .idle{
     margin: 0 auto;
@@ -46,7 +65,7 @@ h1{
     font-size: 1.5rem;
     background-color: white;
     border-radius: 10px;
-    border: 3px solid black;
+    border: 3px solid white;
     cursor: pointer;
     transition: 0.1s;
 }
@@ -68,4 +87,8 @@ h1{
     cursor: pointer;
     border: 3px solid white;
     transition: 0.1s;
+}
+h2{
+    font-family: Montserrat;
+    color: white;
 }

@@ -11,6 +11,7 @@ function clearBoard() {
   });
 }
 let xTurn = false;
+let displayWin = document.querySelector("body > section:nth-child(4) > h2");
 let board = ['', '', '', '', '', '', '', '', ''];
 function checkWin() {
   const firstRow = board[0] + board[1] + board[2];
@@ -31,7 +32,8 @@ function checkWin() {
     || rightCross === 'XXX'
     || leftCross === 'XXX'
   ) {
-    console.log(this);
+    displayWin.innerHTML = "X Is The Winner!"
+    clearBoard();
   } else if (
     firstRow === 'OOO'
     || secondRow === 'OOO'
@@ -42,7 +44,8 @@ function checkWin() {
     || rightCross === 'OOO'
     || leftCross === 'OOO'
   ) {
-    console.log('O WINS');
+    displayWin.innerHTML = "O Is The Winner!"
+    clearBoard();
   }
 }
 // eslint-disable-next-line no-unused-expressions
@@ -51,7 +54,7 @@ function checkWin() {
   const playerTwo = new Player('chris', 'O');
   let turnCount = 0;
   let boxID = 0;
-  const webBoard = document.querySelector('section');
+  const webBoard = document.querySelector("body > section.sectionGrid");
   board.forEach((tile) => {
     const createTile = document.createElement('div');
     createTile.setAttribute('id', boxID);
