@@ -1,45 +1,94 @@
+/* eslint-disable no-console */
 function Player(name, marker) {
   this.name = name;
   this.marker = marker;
 }
-const resetBtn = document.querySelector('#reset');
-resetBtn.addEventListener('mouseover', () => {
-    resetBtn.className = 'active'
-})
-resetBtn.addEventListener('mouseout', () => {
-    resetBtn.className = 'idle'
-})
-/*(function game() {
-  const board = ['', '', '', '', '', '', '', '', ''];
-  const playerOne = new Player('john', 'X');
-  const playerTwo = new Player('chris', 'O');
-  return (playerOne, playerTwo, board);
-}());
-*/
-let turn = false;
+function clearBoard() {
+  const allDivs = document.querySelectorAll('div');
+  board = ['', '', '', '', '', '', '', '', ''];
+  allDivs.forEach((eachDiv) => {
+    eachDiv.innerHTML = '';
+  });
+}
+let xTurn = false;
+let board = ['', '', '', '', '', '', '', '', ''];
+function checkWin() {
+  const firstRow = board[0] + board[1] + board[2];
+  const secondRow = board[3] + board[4] + board[5];
+  const thirdRow = board[6] + board[7] + board[8];
+  const firstCol = board[0] + board[3] + board[6];
+  const secondCol = board[1] + board[4] + board[7];
+  const thirdCol = board[2] + board[5] + board[8];
+  const rightCross = board[0] + board[4] + board[8];
+  const leftCross = board[2] + board[4] + board[6];
+  if (
+    firstRow === 'XXX'
+    || secondRow === 'XXX'
+    || thirdRow === 'XXX'
+    || firstCol === 'XXX'
+    || secondCol === 'XXX'
+    || thirdCol === 'XXX'
+    || rightCross === 'XXX'
+    || leftCross === 'XXX'
+  ) {
+    console.log(this);
+  } else if (
+    firstRow === 'OOO'
+    || secondRow === 'OOO'
+    || thirdRow === 'OOO'
+    || firstCol === 'OOO'
+    || secondCol === 'OOO'
+    || thirdCol === 'OOO'
+    || rightCross === 'OOO'
+    || leftCross === 'OOO'
+  ) {
+    console.log('O WINS');
+  }
+}
 // eslint-disable-next-line no-unused-expressions
 (function displayBoard() {
-  const board = ['', '', '', '', '', '', '', '', ''];
   const playerOne = new Player('john', 'X');
   const playerTwo = new Player('chris', 'O');
+  let turnCount = 0;
+  let boxID = 0;
   const webBoard = document.querySelector('section');
   board.forEach((tile) => {
     const createTile = document.createElement('div');
-    createTile.addEventListener('click', () => {
-      turn = !turn;
-      if (turn) {
-        tile = playerOne.marker;
-        createTile.innerHTML = `<span>${tile}</span>`;
+    createTile.setAttribute('id', boxID);
+    boxID += 1;
+    createTile.addEventListener('click', (obj) => {
+      if (xTurn) {
+        if (createTile.innerHTML !== '') {
+          return console.log('taken');
+        }
+        board[obj.currentTarget.id] = playerOne.marker;
+        createTile.innerHTML = `<span>${playerOne.marker}</span>`;
+        checkWin();
+        xTurn = !xTurn;
       } else {
-        tile = playerTwo.marker;
-        createTile.innerHTML = `<span>${tile}</span>`;
+        if (createTile.innerHTML !== '') {
+          return console.log('taken');
+        }
+        board[obj.currentTarget.id] = playerTwo.marker;
+        createTile.innerHTML = `<span>${playerTwo.marker}</span>`;
+        checkWin();
+        xTurn = !xTurn;
       }
     });
     webBoard.appendChild(createTile);
   });
   return (webBoard);
 }());
-
+const resetBtn = document.querySelector('#reset');
+resetBtn.addEventListener('mouseover', () => {
+  resetBtn.className = 'active';
+});
+resetBtn.addEventListener('mouseout', () => {
+  resetBtn.className = 'idle';
+});
+resetBtn.addEventListener('click', () => {
+  clearBoard();
+});
 /* function displayGameboard (){
     const boxOne =
 }
