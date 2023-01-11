@@ -10,11 +10,15 @@ function clearBoard() {
     eachDiv.innerHTML = '';
   });
 }
+const displayWin = document.querySelector('#overlay');
+function showOverlay() {
+  setTimeout(() => { displayWin.classList.toggle('fade'); }, 5000);
+  displayWin.classList.toggle('fade');
+}
 let xTurn = false;
-const displayWin = document.querySelector('body > section:nth-child(4) > h2');
 let board = ['', '', '', '', '', '', '', '', ''];
 function checkWin() {
-  const checkDraw = board.reduce((first, second) => first + second)
+  const checkDraw = board.reduce((first, second) => first + second);
   const firstRow = board[0] + board[1] + board[2];
   const secondRow = board[3] + board[4] + board[5];
   const thirdRow = board[6] + board[7] + board[8];
@@ -34,6 +38,7 @@ function checkWin() {
     || leftCross === 'XXX'
   ) {
     displayWin.innerHTML = 'X Is The Winner!';
+    showOverlay();
     clearBoard();
   } else if (
     firstRow === 'OOO'
@@ -46,11 +51,13 @@ function checkWin() {
     || leftCross === 'OOO'
   ) {
     displayWin.innerHTML = 'O Is The Winner!';
+    showOverlay();
     clearBoard();
   } else if (
     checkDraw.length === 9
   ) {
     displayWin.innerHTML = 'DRAW!';
+    showOverlay();
     clearBoard();
   }
 }

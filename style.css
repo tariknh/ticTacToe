@@ -13,6 +13,7 @@
     font-family: Helvetica;
     text-align: center;
     box-sizing: border-box;
+    overflow: hidden;
 }
 body{
     background-image: url(space.jpg);
@@ -91,4 +92,23 @@ span{
 h2{
     font-family: Montserrat;
     color: white;
+}
+#overlay{
+    position: absolute;
+    visibility: hidden;
+}
+.fade{
+    position: absolute;
+    place-self: center;
+    place-content: center;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: hsla(0, 0%, 0%, 0.9);
+    color: white;
+    font-size: 5rem;
+    transition: 2s;
+    visibility: visible !important;
 }
