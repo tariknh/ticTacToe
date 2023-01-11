@@ -65,7 +65,6 @@ function checkWin() {
 (function displayBoard() {
   const playerOne = new Player('john', 'X');
   const playerTwo = new Player('chris', 'O');
-  const turnCount = 0;
   let boxID = 0;
   const webBoard = document.querySelector('body > section.sectionGrid');
   board.forEach((tile) => {
